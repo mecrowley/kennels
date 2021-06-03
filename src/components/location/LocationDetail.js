@@ -10,10 +10,8 @@ export const LocationDetail = () => {
 
 
     useEffect(() => {
-        getLocationById(parseInt(locationId)).then(
-
-            locationObj => setLocation(locationObj)
-            )
+        getLocationById(parseInt(locationId))
+        .then(locationObj => setLocation(locationObj))
     }, [locationId])
 
 
