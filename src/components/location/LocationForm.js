@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useState } from "react"
 import { LocationContext } from "../location/LocationProvider"
 import "./Location.css"
 import { useHistory } from 'react-router-dom';

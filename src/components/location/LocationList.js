@@ -1,43 +1,42 @@
 import React, { useContext, useEffect } from "react"
 import { LocationContext } from "./LocationProvider"
-import { useHistory } from 'react-router-dom'
 import "./Location.css"
+import { Link, useHistory } from "react-router-dom"
 
 export const LocationList = () => {
-  // This state changes when `getLocations()` is invoked below
-  const { locations, getLocations } = useContext(LocationContext)
+  const { getLocations, locations } = useContext(LocationContext)
 
-  //useEffect - reach out to the world for something
+  // Initialization effect hook -> Go get Location data
   useEffect(() => {
-    console.log("LocationList: useEffect - getLocations")
     getLocations()
   }, [])
 
   const history = useHistory()
-
+  
   return (
     <>
-      <h2>Locations</h2>
-      <button onClick={
-        () => history.push("/locations/create")
-      }>
-            Add New Location
-      </button>
+      <h1>Locations</h1>
+
+      <button onClick={() => history.push("/locations/create")}>
+        Add New Location
+            </button>
+
       <div className="locations">
-      {
-        locations.map(location => {
-          return (
-            <div className="location" id={`location--${location.id}`}>
-              <div className="location__name">
-                Name: { location.name }
-              </div>
-              <div className="location__breed">
-                Address: { location.address }
-              </div>
-            </div>
-          )
-        })
-      }
+        {
+          locations.map(location => {
+            return (
+              <>
+                <div className="location">
+                  <Link to={`/locations/detail/${location.id}`}>
+                    <h3>{location.name}</h3>
+                  </Link>
+                  <div>Employees: {location.employees.length}</div>
+                  <div>Animals: {location.animals.length}</div>
+                </div>
+              </>
+            )
+          })
+        }
       </div>
     </>
   )

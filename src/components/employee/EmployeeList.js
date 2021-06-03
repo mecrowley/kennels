@@ -1,43 +1,40 @@
 import React, { useContext, useEffect } from "react"
 import { EmployeeContext } from "./EmployeeProvider"
-import { useHistory } from 'react-router-dom'
 import "./Employee.css"
+import { Link, useHistory } from "react-router-dom"
 
 export const EmployeeList = () => {
-  // This state changes when `getEmployees()` is invoked below
-  const { employees, getEmployees } = useContext(EmployeeContext)
+  const { getEmployees, employees } = useContext(EmployeeContext)
 
-  //useEffect - reach out to the world for something
+  // Initialization effect hook -> Go get Employee data
   useEffect(() => {
-    console.log("EmployeeList: useEffect - getEmployees")
     getEmployees()
   }, [])
 
   const history = useHistory()
-
+  
   return (
     <>
-      <h2>Employees</h2>
-      <button onClick={
-        () => history.push("/employees/create")
-      }>
-            Add New Employee
-      </button>
+      <h1>Employees</h1>
+
+      <button onClick={() => history.push("/employees/create")}>
+        Add New Employee
+            </button>
+
       <div className="employees">
-      {
-        employees.map(employee => {
-          return (
-            <div className="employee" id={`employee--${employee.id}`}>
-              <div className="employee__name">
-                Name: { employee.name }
-              </div>
-              <div className="employee__breed">
-                Location: { employee.location.name }
-              </div>
-            </div>
-          )
-        })
-      }
+        {
+          employees.map(employee => {
+            return (
+              <>
+                <div className="employee">
+                  <Link to={`/employees/detail/${employee.id}`}>
+                    <h3>{employee.name}</h3>
+                  </Link>
+                </div>
+              </>
+            )
+          })
+        }
       </div>
     </>
   )
