@@ -1,26 +1,32 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { LocationContext } from "./LocationProvider"
 import "./Location.css"
 import { useParams } from "react-router-dom"
 
 export const LocationDetail = () => {
-    const { locations, getLocations } = useContext(LocationContext)
+    const { getLocationById } = useContext(LocationContext)
+    const [ location, setLocation ] = useState({ employees: [], animals: [] })
     const { locationId } = useParams();
 
 
     useEffect(() => {
-        getLocations()   
-    }, [])
+        getLocationById(parseInt(locationId)).then(
 
-    const thisLocation = locations.find(l => l.id === parseInt(locationId)) || { employees: [], customers: [] }
-    const employeeNames = thisLocation.map(location => {return location.employees.name}).join(", ")
+            locationObj => setLocation(locationObj)
+            )
+    }, [locationId])
+
 
     return (
+        <>
     <section className="location">
-        <h3 className="location__name">{ thisLocation.name }</h3>
-        <div className="location__address">{ thisLocation.address }</div>
+        <h3 className="location__name">{location.name}</h3>
+        <div>{location.address}</div>
         <h4>Employees</h4>
-        <div className="employee__names">{ employeeNames }</div>
+        { location.employees.map(employee => (<div>{employee.name}</div>))}
+        <h4>Locations</h4>
+        { location.animals.map(animal => (<div>{animal.name}</div>))}
     </section>
-    )
+    </>
+)
 }
