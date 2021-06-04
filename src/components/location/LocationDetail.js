@@ -28,7 +28,6 @@ export const LocationDetail = () => {
             })
     }
 
-
     return (
         <>
     <section className="location">
@@ -38,6 +37,9 @@ export const LocationDetail = () => {
         { location.employees.map(employee => (<div>{employee.name}</div>))}
         <h4>Current Residents</h4>
         { location.animals.map(animal => (<div>{animal.name}</div>))}
+        <button onClick={event => {
+            history.push(`/locations/edit/${location.id}`)
+        }}>Edit Location</button>
         <button onClick={handleDelete}>Delete Location</button>
     </section>
     </>
