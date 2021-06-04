@@ -4,13 +4,18 @@ import "./Employee.css"
 import { useParams, useHistory } from "react-router-dom"
 
 export const EmployeeDetail = () => {
-    const { getEmployeeById, deleteEmployee } = useContext(EmployeeContext)
+    const { employees, getEmployeeById, deleteEmployee } = useContext(EmployeeContext)
     const [employee, setEmployee] = useState({ location: {} })
     const { employeeId } = useParams();
 
     useEffect(() => {
-        getEmployeeById(parseInt(employeeId))
-        .then(employeeObj => setEmployee(employeeObj))
+        if (employees.length > 0) {
+            const employeeObj = employees.find(e => e.id === parseInt(employeeId))
+            setEmployee(employeeObj)
+        } else {
+            getEmployeeById(parseInt(employeeId))
+                .then(employeeObj => setEmployee(employeeObj))
+        }
     }, [employeeId])
 
     const history = useHistory()
@@ -24,11 +29,11 @@ export const EmployeeDetail = () => {
 
     return (
         <>
-        <section className="employee">
-            <h3 className="employee__name">{employee.name}</h3>
-            <div className="employee__location">{employee.location.name}</div>
-            <button onClick={handleDelete}>Delete Employee</button>
-        </section>
+            <section className="employee">
+                <h3 className="employee__name">{employee.name}</h3>
+                <div className="employee__location">{employee.location.name}</div>
+                <button onClick={handleDelete}>Delete Employee</button>
+            </section>
         </>
     )
 }
