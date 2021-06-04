@@ -22,7 +22,7 @@ export const LocationDetail = () => {
         <div>{location.address}</div>
         <h4>Employees</h4>
         { location.employees.map(employee => (<div>{employee.name}</div>))}
-        <h4>Locations</h4>
+        <h4>Current Residents</h4>
         { location.animals.map(animal => (<div>{animal.name}</div>))}
     </section>
     </>

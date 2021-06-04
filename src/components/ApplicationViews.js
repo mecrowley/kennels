@@ -10,6 +10,8 @@ import { AnimalForm } from "./animal/AnimalForm";
 import { AnimalDetail } from "./animal/AnimalDetail";
 import { CustomerProvider } from "./customer/CustomerProvider";
 import { CustomerList } from "./customer/CustomerList";
+import { CustomerForm } from "./customer/CustomerForm";
+import { CustomerDetail } from "./customer/CustomerDetail";
 import { EmployeeProvider } from "./employee/EmployeeProvider";
 import { EmployeeList } from "./employee/EmployeeList";
 import { EmployeeForm } from "./employee/EmployeeForm";
@@ -58,13 +60,22 @@ export const ApplicationViews = () => {
                         <Route exact path="/animals/detail/:animalId(\d+)">
                             <AnimalDetail />
                         </Route>
+                        <Route exact path="/animals/edit/:animalId(\d+)">
+                            <AnimalForm />
+                        </Route>
                     </CustomerProvider>
                 </LocationProvider>
             </AnimalProvider>
 
             <CustomerProvider>
-                <Route path="/customers">
+                <Route exact path="/customers">
                     <CustomerList />
+                </Route>
+                <Route exact path="/customers/create">
+                    <CustomerForm />
+                </Route>
+                <Route exact path="/customers/detail/:customerId(\d+)">
+                    <CustomerDetail />
                 </Route>
             </CustomerProvider>
 
