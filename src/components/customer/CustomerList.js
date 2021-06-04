@@ -14,11 +14,6 @@ export const CustomerList = () => {
   return (
     <>
       <h1>Customers</h1>
-
-      <button onClick={() => history.push("/customers/create")}>
-        Add New Customer
-            </button>
-
       <div className="customers">
         {
           customers.map(customer => {

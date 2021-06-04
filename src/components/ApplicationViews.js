@@ -71,9 +71,6 @@ export const ApplicationViews = () => {
                 <Route exact path="/customers">
                     <CustomerList />
                 </Route>
-                <Route exact path="/customers/create">
-                    <CustomerForm />
-                </Route>
                 <Route exact path="/customers/detail/:customerId(\d+)">
                     <CustomerDetail />
                 </Route>
