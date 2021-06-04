@@ -6,9 +6,14 @@ export const CustomerProvider = (props) => {
     const [customers, setCustomers] = useState([])
 
     const getCustomers = () => {
-        return fetch("http://localhost:8088/customers")
+        return fetch("http://localhost:8088/customers?_embed=animals")
         .then(res => res.json())
         .then(setCustomers)
+    }
+
+    const getCustomerById = customerId => {
+        return fetch(`http://localhost:8088/customers/${customerId}?_embed=animals`)
+        .then(res => res.json())
     }
 
     const addCustomer = customerObj => {
@@ -24,7 +29,7 @@ export const CustomerProvider = (props) => {
 
     return (
         <CustomerContext.Provider value={{
-            customers, getCustomers, addCustomer
+            customers, getCustomers, getCustomerById, addCustomer
         }}>
             {props.children}
         </CustomerContext.Provider>

@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom"
 
 export const EmployeeDetail = () => {
     const { getEmployeeById } = useContext(EmployeeContext)
-    const [employee, setEmployee] = useState({ location: {}, customer: {} })
+    const [employee, setEmployee] = useState({ location: {} })
     const { employeeId } = useParams();
 
     useEffect(() => {
