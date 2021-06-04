@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react"
 import { LocationContext } from "./LocationProvider"
 import "./Location.css"
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 
 export const LocationDetail = () => {
-    const { getLocationById } = useContext(LocationContext)
+    const { getLocationById, deleteLocation } = useContext(LocationContext)
     const [ location, setLocation ] = useState({ employees: [], animals: [] })
     const { locationId } = useParams();
 
@@ -13,6 +13,15 @@ export const LocationDetail = () => {
         getLocationById(parseInt(locationId))
         .then(locationObj => setLocation(locationObj))
     }, [locationId])
+
+    const history = useHistory()
+
+    const handleDelete = () => {
+        deleteLocation(location.id)
+            .then(() => {
+                history.push("/locations")
+            })
+    }
 
 
     return (
@@ -24,6 +33,7 @@ export const LocationDetail = () => {
         { location.employees.map(employee => (<div>{employee.name}</div>))}
         <h4>Current Residents</h4>
         { location.animals.map(animal => (<div>{animal.name}</div>))}
+        <button onClick={handleDelete}>Delete Location</button>
     </section>
     </>
 )
