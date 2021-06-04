@@ -27,6 +27,17 @@ export const LocationProvider = (props) => {
         .then(getLocations)
     }
 
+    const updateLocation = location => {
+        return fetch(`http://localhost:8088/locations/${location.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(location)
+        })
+          .then(getLocations)
+      }
+
     const deleteLocation = locationId => {
         return fetch(`http://localhost:8088/locations/${locationId}`, {
             method: "DELETE"
@@ -36,7 +47,7 @@ export const LocationProvider = (props) => {
 
     return (
         <LocationContext.Provider value={{
-            locations, getLocations, getLocationById, addLocation, deleteLocation
+            locations, getLocations, getLocationById, addLocation, updateLocation, deleteLocation
         }}>
             {props.children}
         </LocationContext.Provider>
