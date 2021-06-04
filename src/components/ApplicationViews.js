@@ -10,7 +10,6 @@ import { AnimalForm } from "./animal/AnimalForm";
 import { AnimalDetail } from "./animal/AnimalDetail";
 import { CustomerProvider } from "./customer/CustomerProvider";
 import { CustomerList } from "./customer/CustomerList";
-import { CustomerForm } from "./customer/CustomerForm";
 import { CustomerDetail } from "./customer/CustomerDetail";
 import { EmployeeProvider } from "./employee/EmployeeProvider";
 import { EmployeeList } from "./employee/EmployeeList";
