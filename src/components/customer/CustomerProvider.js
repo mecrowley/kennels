@@ -6,18 +6,18 @@ export const CustomerProvider = (props) => {
     const [customers, setCustomers] = useState([])
 
     const getCustomers = () => {
-        return fetch("http://localhost:8088/customers?_embed=animals")
+        return fetch("https://mec-kennels-api.herokuapp.com/customers?_embed=animals")
         .then(res => res.json())
         .then(setCustomers)
     }
 
     const getCustomerById = customerId => {
-        return fetch(`http://localhost:8088/customers/${customerId}?_embed=animals`)
+        return fetch(`https://mec-kennels-api.herokuapp.com/customers/${customerId}?_embed=animals`)
         .then(res => res.json())
     }
 
     const addCustomer = customerObj => {
-        return fetch("http://localhost:8088/customers", {
+        return fetch("https://mec-kennels-api.herokuapp.com/customers", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

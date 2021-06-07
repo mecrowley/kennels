@@ -9,18 +9,18 @@ export const AnimalProvider = (props) => {
     const [ searchTerms, setSearchTerms ] = useState("")
 
     const getAnimals = () => {
-        return fetch("http://localhost:8088/animals?_expand=location&_expand=customer")
+        return fetch("https://mec-kennels-api.herokuapp.com/animals?_expand=location&_expand=customer")
         .then(res => res.json())
         .then(setAnimals)
     }
 
     const getAnimalById = animalId => {
-        return fetch(`http://localhost:8088/animals/${animalId}?_expand=location&_expand=customer`)
+        return fetch(`https://mec-kennels-api.herokuapp.com/animals/${animalId}?_expand=location&_expand=customer`)
         .then(res => res.json())
     }
 
     const addAnimal = animalObj => {
-        return fetch("http://localhost:8088/animals", {
+        return fetch("https://mec-kennels-api.herokuapp.com/animals", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -31,7 +31,7 @@ export const AnimalProvider = (props) => {
     }
 
     const updateAnimal = animal => {
-        return fetch(`http://localhost:8088/animals/${animal.id}`, {
+        return fetch(`https://mec-kennels-api.herokuapp.com/animals/${animal.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json"
@@ -42,7 +42,7 @@ export const AnimalProvider = (props) => {
       }
 
     const releaseAnimal = animalId => {
-        return fetch(`http://localhost:8088/animals/${animalId}`, {
+        return fetch(`https://mec-kennels-api.herokuapp.com/animals/${animalId}`, {
             method: "DELETE"
         })
             .then(getAnimals)

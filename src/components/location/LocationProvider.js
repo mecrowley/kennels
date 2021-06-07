@@ -6,18 +6,18 @@ export const LocationProvider = (props) => {
     const [locations, setLocations] = useState([])
 
     const getLocations = () => {
-        return fetch("http://localhost:8088/locations?_embed=employees&_embed=animals")
+        return fetch("https://mec-kennels-api.herokuapp.com/locations?_embed=employees&_embed=animals")
         .then(res => res.json())
         .then(setLocations)
     }
     
     const getLocationById = locationId => {
-        return fetch(`http://localhost:8088/locations/${locationId}?_embed=employees&_embed=animals`)
+        return fetch(`https://mec-kennels-api.herokuapp.com/${locationId}?_embed=employees&_embed=animals`)
         .then(res => res.json())
     }
 
     const addLocation = locationObj => {
-        return fetch("http://localhost:8088/locations", {
+        return fetch("https://mec-kennels-api.herokuapp.com/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -28,7 +28,7 @@ export const LocationProvider = (props) => {
     }
 
     const updateLocation = location => {
-        return fetch(`http://localhost:8088/locations/${location.id}`, {
+        return fetch(`https://mec-kennels-api.herokuapp.com/${location.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json"
@@ -39,7 +39,7 @@ export const LocationProvider = (props) => {
       }
 
     const deleteLocation = locationId => {
-        return fetch(`http://localhost:8088/locations/${locationId}`, {
+        return fetch(`https://mec-kennels-api.herokuapp.com/${locationId}`, {
             method: "DELETE"
         })
             .then(getLocations)
