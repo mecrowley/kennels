@@ -12,7 +12,7 @@ export const LocationProvider = (props) => {
     }
     
     const getLocationById = locationId => {
-        return fetch(`https://mec-kennels-api.herokuapp.com/${locationId}?_embed=employees&_embed=animals`)
+        return fetch(`https://mec-kennels-api.herokuapp.com/locations/${locationId}?_embed=employees&_embed=animals`)
         .then(res => res.json())
     }
 
