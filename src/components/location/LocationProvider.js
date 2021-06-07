@@ -28,7 +28,7 @@ export const LocationProvider = (props) => {
     }
 
     const updateLocation = location => {
-        return fetch(`https://mec-kennels-api.herokuapp.com/${location.id}`, {
+        return fetch(`https://mec-kennels-api.herokuapp.com/locations/${location.id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json"
@@ -39,7 +39,7 @@ export const LocationProvider = (props) => {
       }
 
     const deleteLocation = locationId => {
-        return fetch(`https://mec-kennels-api.herokuapp.com/${locationId}`, {
+        return fetch(`https://mec-kennels-api.herokuapp.com/locations/${locationId}`, {
             method: "DELETE"
         })
             .then(getLocations)
