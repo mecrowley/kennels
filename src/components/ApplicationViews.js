@@ -1,5 +1,6 @@
 import React from "react"
 import { Route } from "react-router-dom"
+import logo from "./auth/logo.png";
 import { LocationProvider } from "./location/LocationProvider";
 import { LocationList } from "./location/LocationList";
 import { LocationDetail } from "./location/LocationDetail";
@@ -21,12 +22,15 @@ export const ApplicationViews = () => {
     return (
         <>
             <Route exact path="/">
-                <h2>Nashville Kennels</h2>
-                <small>Loving care when you're not there.</small>
-                <address>
-                    <div>Visit Us at the Nashville North Location</div>
-                    <div>500 Puppy Way</div>
-                </address>
+                <h1>Nashville Kennels</h1>
+                <div className="header">
+                    <small>Loving care when you're not there.</small>
+                    <address>
+                        <div>Visit Us at the Nashville North Location</div>
+                        <div>500 Puppy Way</div>
+                    </address>
+                    <img src={logo} />
+                </div>
             </Route>
 
 

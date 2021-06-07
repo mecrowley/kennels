@@ -29,13 +29,15 @@ export const EmployeeDetail = () => {
 
     return (
         <>
-            <section className="employee">
+            <section className="employeeDetail">
                 <h3 className="employee__name">{employee.name}</h3>
-                <div className="employee__location">{employee.location.name}</div>
-                <button onClick={() => {
-                    history.push(`/employees/edit/${employee.id}`)
-                }}>Edit Employee</button>
-                <button onClick={handleDelete}>Delete Employee</button>
+                <div className="employee__info">
+                    <div className="employee__location">{employee.location.name}</div>
+                    <button className="detailButton" onClick={() => {
+                        history.push(`/employees/edit/${employee.id}`)
+                    }}>Edit Employee</button>
+                    <button className="detailButton" onClick={handleDelete}>Delete Employee</button>
+                </div>
             </section>
         </>
     )

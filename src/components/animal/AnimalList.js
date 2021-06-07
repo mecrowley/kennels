@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom"
 
 export const AnimalList = () => {
   const { getAnimals, animals, searchTerms } = useContext(AnimalContext)
-  const [ filteredAnimals, setFiltered ] = useState([])
+  const [filteredAnimals, setFiltered] = useState([])
   const history = useHistory()
 
   useEffect(() => {
@@ -28,10 +28,6 @@ export const AnimalList = () => {
     <>
       <h1>Animals</h1>
 
-      <button onClick={() => history.push("/animals/create")}>
-        Make Reservation
-            </button>
-
       <div className="animals">
         {
           filteredAnimals.map(animal => {
@@ -42,11 +38,16 @@ export const AnimalList = () => {
                     <h3>{animal.name}</h3>
                   </Link>
                 </div>
+
+
               </>
             )
           })
         }
       </div>
+        <button className="addButton" onClick={() => history.push("/animals/create")}>
+          Make Reservation
+            </button>
     </>
   )
 }

@@ -15,9 +15,9 @@ export const AnimalDetail = () => {
         } else {
 
             getAnimalById(parseInt(animalId))
-            .then(animalObj => setAnimal(animalObj))
+                .then(animalObj => setAnimal(animalObj))
         }
-        }, [animalId])
+    }, [animalId])
 
     const history = useHistory()
 
@@ -30,15 +30,17 @@ export const AnimalDetail = () => {
 
     return (
         <>
-            <section className="animal">
-                <h3 className="animal__name">{animal.name}</h3>
-                <div className="animal__breed">{animal.breed}</div>
-                <div className="animal__location">Location: {animal.location.name}</div>
-                <div className="animal__owner">Customer: {animal.customer.name}</div>
-                <button onClick={() => {
-                    history.push(`/animals/edit/${animal.id}`)
-                }}>Edit</button>
-                <button onClick={handleRelease}>Release Animal</button>
+            <section className="animalDetail">
+                <h2 className="animal__name">{animal.name}</h2>
+                <div className="animal__info">
+                    <div className="animal__breed">Breed: {animal.breed}</div>
+                    <div className="animal__location">Location: {animal.location.name}</div>
+                    <div className="animal__owner">Customer: {animal.customer.name}</div>
+                    <button className="detailButton" onClick={() => {
+                        history.push(`/animals/edit/${animal.id}`)
+                    }}>Edit</button>
+                    <button className="detailButton" onClick={handleRelease}>Release Animal</button>
+                </div>
             </section>
         </>
     )

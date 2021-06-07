@@ -12,14 +12,10 @@ export const EmployeeList = () => {
   }, [])
 
   const history = useHistory()
-  
+
   return (
     <>
       <h1>Employees</h1>
-
-      <button onClick={() => history.push("/employees/create")}>
-        Add New Employee
-            </button>
 
       <div className="employees">
         {
@@ -36,6 +32,9 @@ export const EmployeeList = () => {
           })
         }
       </div>
+      <button className="addButton" onClick={() => history.push("/employees/create")}>
+        Add New Employee
+            </button>
     </>
   )
 }

@@ -5,8 +5,18 @@
   }
   
   .customer {
-      flex-basis: 28%;
+      flex-basis: 35%;
       margin: 1em;
       padding: 1em;
       border: 1px solid goldenrod;
   }
+
+  .customerDetail {
+    display: flex;
+    flex-direction: column;
+    margin: 4em auto;
+    padding: 0 2em 2em;
+    border: 1px solid goldenrod;
+    text-align: center;
+    width: 45%;
+}

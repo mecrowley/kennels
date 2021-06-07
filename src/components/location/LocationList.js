@@ -12,14 +12,10 @@ export const LocationList = () => {
   }, [])
 
   const history = useHistory()
-  
+
   return (
     <>
       <h1>Locations</h1>
-
-      <button onClick={() => history.push("/locations/create")}>
-        Add New Location
-            </button>
 
       <div className="locations">
         {
@@ -38,6 +34,9 @@ export const LocationList = () => {
           })
         }
       </div>
+      <button className="addButton" onClick={() => history.push("/locations/create")}>
+        Add New Location
+            </button>
     </>
   )
 }

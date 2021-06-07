@@ -20,9 +20,9 @@ export const CustomerDetail = () => {
 
     return (
         <>
-            <section className="customer">
+            <section className="customerDetail">
                 <h3 className="customer__name">{customer.name}</h3>
-                <div>{customer.address}</div>
+                <div>Address: {customer.address}</div>
                 <h4>Pets</h4>
                 {customer.animals.map(animal => (<div>{animal.name}</div>))}
             </section>

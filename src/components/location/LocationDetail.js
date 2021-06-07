@@ -5,7 +5,7 @@ import { useParams, useHistory } from "react-router-dom"
 
 export const LocationDetail = () => {
     const { locations, getLocationById, deleteLocation } = useContext(LocationContext)
-    const [ location, setLocation ] = useState({ employees: [], animals: [] })
+    const [location, setLocation] = useState({ employees: [], animals: [] })
     const { locationId } = useParams();
 
 
@@ -15,7 +15,7 @@ export const LocationDetail = () => {
             setLocation(locationObj)
         } else {
             getLocationById(parseInt(locationId))
-            .then(locationObj => setLocation(locationObj))
+                .then(locationObj => setLocation(locationObj))
         }
     }, [locationId])
 
@@ -30,18 +30,20 @@ export const LocationDetail = () => {
 
     return (
         <>
-    <section className="location">
-        <h3 className="location__name">{location.name}</h3>
-        <div>{location.address}</div>
-        <h4>Employees</h4>
-        { location.employees.map(employee => (<div>{employee.name}</div>))}
-        <h4>Current Residents</h4>
-        { location.animals.map(animal => (<div>{animal.name}</div>))}
-        <button onClick={event => {
-            history.push(`/locations/edit/${location.id}`)
-        }}>Edit Location</button>
-        <button onClick={handleDelete}>Delete Location</button>
-    </section>
-    </>
-)
+            <section className="locationDetail">
+                <h3 className="location__name">{location.name}</h3>
+                <div className="location__info">
+                    <div>{location.address}</div>
+                    <h4>Employees</h4>
+                    {location.employees.map(employee => (<div>{employee.name}</div>))}
+                    <h4>Current Residents</h4>
+                    {location.animals.map(animal => (<div>{animal.name}</div>))}
+                    <button className="detailButton" onClick={event => {
+                        history.push(`/locations/edit/${location.id}`)
+                    }}>Edit Location</button>
+                    <button className="detailButton" onClick={handleDelete}>Delete Location</button>
+                </div>
+            </section>
+        </>
+    )
 }

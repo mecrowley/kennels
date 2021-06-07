@@ -3,15 +3,17 @@ import { AnimalContext } from "./AnimalProvider"
 import "./Animal.css"
 
 export const AnimalSearch = () => {
-  const { setSearchTerms } = useContext(AnimalContext)
+    const { setSearchTerms } = useContext(AnimalContext)
 
-  return (
-    <>
-      Animal search:
+    return (
+        <>
+            <div className="animalSearch">
+                Animal search:
       <input type="text"
-        className="input--wide"
-        onKeyUp={(event) => setSearchTerms(event.target.value)}
-        placeholder="Search for an animal... " />
-    </>
-  )
+                    className="input--wide"
+                    onKeyUp={(event) => setSearchTerms(event.target.value.toLowerCase())}
+                    placeholder="Search for an animal... " />
+            </div>
+        </>
+    )
 }

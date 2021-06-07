@@ -5,8 +5,31 @@
   }
   
   .employee {
-      flex-basis: 28%;
+      flex-basis: 35%;
       margin: 1em;
       padding: 1em;
       border: 1px solid goldenrod;
   }
+
+  .addButton {
+    display: block;
+    margin: auto;
+  }
+
+  .employeeDetail {
+    display: flex;
+    flex-direction: column;
+    margin: 4em auto;
+    padding: 0 2em 2em;
+    border: 1px solid goldenrod;
+    text-align: center;
+    width: 45%;
+}
+
+.employee__info {
+    margin: 0 auto 1em;
+}
+
+.detailButton {
+    margin: 1.5em 1em 0 0;
+}
